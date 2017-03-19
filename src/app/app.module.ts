@@ -1,3 +1,4 @@
+import { ReactiveService } from './reactive/reactive.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -6,7 +7,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 import { AppComponent } from './app.component';
 import { ReactiveComponent } from './reactive/reactive.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +18,7 @@ import { ReactiveComponent } from './reactive/reactive.component';
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [ReactiveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

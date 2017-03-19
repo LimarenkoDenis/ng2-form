@@ -1,34 +1,77 @@
 <md-card class="form">
   <form [formGroup]="authForm" (ngSubmit)="submit(authForm)">
-    <div fxLayout='row' fxLayoutAlign="space-between">
-      <md-input-container fxFlex="45" >
+    <div>Info</div>
+    <div fxLayout='row' fxLayoutAlign="space-between" class="form-group">
+      <md-input-container fxFlex="45">
         <input mdInput placeholder="name" #name  formControlName="name">
+        <md-hint align="end" *ngIf="authForm.controls['name'].errors && authForm.controls['name'].touched">
+          You can't leave this empty. Choose your username
+        </md-hint>
       </md-input-container>
-      <md-input-container fxFlex="45" >
-        <input mdInput placeholder="surname" #surname required>
-      </md-input-container>
-    </div>
-    <div fxLayout='column' fxLayoutAlign="space-between">
-      <md-input-container >
-        <input mdInput placeholder="Email" #email required>
-      </md-input-container>
-      <md-input-container >
-        <input mdInput placeholder="Create a password" #password required>
-      </md-input-container>
-      <md-input-container >
-        <input mdInput placeholder="Cinfirm your password" #password required>
+      <md-input-container fxFlex="45">
+        <input mdInput placeholder="surname" #surname formControlName="surname">
+        <md-hint align="end" *ngIf="authForm.controls['surname'].errors && authForm.controls['surname'].touched">
+          You can't leave this empty. Choose your username
+        </md-hint>
       </md-input-container>
     </div>
-    <div fxLayout='row' fxLayoutAlign="space-between">
-      <h3 fxFlex="100">Birthday</h3>
-      <md-input-container fxFlex="10" >
-        <input mdInput placeholder="day">
+    <div>Mobile phone</div>
+    <div fxLayout='row'class="form-group">
+      <md-select fxFlex="20">
+        <md-option *ngFor="let country of countries" [value]="country.dial_code">
+          {{country.name}} {{ country.dial_code }}
+        </md-option>
+      </md-select>
+      <md-input-container fxFlex="80">
+        <input mdInput formControlName="phone">
       </md-input-container>
     </div>
-    <div fxLayout='column' fxLayoutAlign="space-between">
-      <md-select placeholder="Gender" formControlName="gender">
+
+    <div>Account</div>
+    <div fxLayout='column' fxLayoutAlign="space-between" class="form-group">
+      <md-input-container >
+        <input mdInput placeholder="Email" #email formControlName="email">
+        <md-hint align="end">eroor</md-hint>
+      </md-input-container>
+      <md-input-container >
+        <input mdInput placeholder="Create a password" #password formControlName="password">
+        <md-hint align="end">eroor</md-hint>
+      </md-input-container>
+      ds {{authForm.error_phone}}
+      <md-input-container >
+        <input mdInput placeholder="Cinfirm your password" #confirm formControlName="confirm">
+        <md-hint align="end">eroor</md-hint>
+      </md-input-container>
+    </div>
+
+    <div>Birthday</div>
+    <div class="form-group">
+      <div fxLayout='row' fxLayoutAlign="space-between" formGroupName="birthday">
+        <md-input-container fxFlex="10" >
+          <input mdInput placeholder="day" formControlName="day">
+          <md-hint align="start">eroor</md-hint>
+        </md-input-container>
+        <md-select fxFlex="45" placeholder="Month" formControlName="month">
+          <md-option *ngFor="let month of months" [value]="month.code">
+            {{ month.title }}
+          </md-option>
+        </md-select>
+        <md-input-container fxFlex="40" >
+          <input mdInput placeholder="year" formControlName="year">
+          <md-hint align="start">eroor</md-hint>
+        </md-input-container>
+      </div>
+    </div>
+
+    <div fxLayout='column' fxLayoutAlign="space-between" class="form-group">
+      <md-select fxFlex="100" placeholder="Gender" formControlName="gender" class="form-group">
         <md-option *ngFor="let gender of genders" [value]="gender">
           {{ gender }}
+        </md-option>
+      </md-select>
+      <md-select fxFlex="100" placeholder="Location" formControlName="location" class="form-group">
+        <md-option *ngFor="let country of countries" [value]="country.name">
+          {{ country.name }}
         </md-option>
       </md-select>
     </div>

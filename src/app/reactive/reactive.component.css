@@ -2,3 +2,20 @@
   width: 600px;
 }
 
+.form-group {
+  margin:15px 0;
+}
+md-select.mat-select {
+    margin-top: 9px;
+}
+
+/*input.ng-valid{
+  border: 1px solid green;
+}
+
+input.ng-pending{
+  border: 1px solid blue;
+}
+input.ng-invalid{
+  border: 5px solid red;
+}*/
