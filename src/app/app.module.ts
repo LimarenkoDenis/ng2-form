@@ -7,10 +7,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 import { AppComponent } from './app.component';
 import { ReactiveComponent } from './reactive/reactive.component';
+import { FormComponent } from './form/form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    ReactiveComponent
+    ReactiveComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

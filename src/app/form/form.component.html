@@ -1,0 +1,20 @@
+<md-card class="form">
+  <form [formGroup]="myForm" (ngSubmit)="submit(myForm)">
+    <div fxLayout='column' fxLayoutAlign="space-between" class="form-group">
+      <md-input-container fxFlex="100">
+        <input mdInput placeholder="title" #title formControlName="title" required>
+        <md-hint align="end" *ngIf="myForm.controls['title'].errors && myForm.controls['title'].touched">
+          You can't leave this empty. Choose your username
+        </md-hint>
+      </md-input-container>
+      <md-input-container fxFlex="100">
+        <input mdInput placeholder="description" #description formControlName="description" required>
+        <md-hint align="end" *ngIf="myForm.controls['description'].errors && myForm.controls['description'].touched">
+          You can't leave this empty. Choose your username
+        </md-hint>
+      </md-input-container>
+    </div>
+
+    <button md-button disabled="authForm.invalid">Next step</button>
+  </form>
+</md-card>

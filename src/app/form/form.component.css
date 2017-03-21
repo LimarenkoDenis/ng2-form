@@ -1,0 +1,10 @@
+.form {
+  width: 600px;
+}
+
+.form-group {
+  margin:15px 0;
+}
+md-select.mat-select {
+    margin-top: 9px;
+}
