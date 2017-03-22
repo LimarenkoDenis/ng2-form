@@ -17,8 +17,7 @@ export class ReactiveComponent implements OnInit {
 
   public constructor(
     private _fb: FormBuilder,
-    private _reactiveService: ReactiveService,
-    private _dialog: MdDialog
+    private _reactiveService: ReactiveService
   ) {
     this._reactiveService.getMonth().subscribe((months: string[]) => this.months = months );
     this._reactiveService.getCountries().subscribe((countries: string[]) => this.countries = countries );
