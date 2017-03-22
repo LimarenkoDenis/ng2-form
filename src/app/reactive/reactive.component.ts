@@ -26,13 +26,13 @@ export class ReactiveComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(1)]],
       surname: ['', [Validators.required, Validators.minLength(1)]],
       phone: ['', Validations.checkPhone],
-      email: [''], // release 2.4.7?
+      email: [''], // release 2.4.7? Validations.email
       password: ['', [Validators.required, Validations.checkPassword]],
-      confirm: [],
+      confirm: [''],
       birthday: this._fb.group({
-        day: [''],
-        month: [''],
-        year: []
+        day: ['', [Validators.required]],
+        month: ['', [Validators.required]],
+        year: ['', [Validators.required]]
       }, { validator: Validations.checkDayInMonth }),
       gender: [''],
       location: ['']
@@ -42,7 +42,13 @@ export class ReactiveComponent implements OnInit {
   public ngOnInit(): void {
   }
 
+  // md select type
+  public setPhone(phone): void {
+    this.authForm.controls['phone'].setValue(phone.value);
+  }
+
   public submit(form: FormGroup): void {
     console.log(form.value);
+    this.authForm.reset();
   }
 }
