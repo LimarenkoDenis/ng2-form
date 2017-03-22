@@ -1,6 +1,6 @@
 import { ReactiveService } from './reactive.service';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Validations } from './../validators/validations';
 
 @Component({

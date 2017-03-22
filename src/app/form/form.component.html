@@ -14,7 +14,14 @@
         </md-hint>
       </md-input-container>
     </div>
-
+    <div fxLayout='row' class="form-group" *ngFor="let img of product.controls['photos'].value">
+      <img class="img" md-card-image [src]="img">
+    </div>
+    <div fxLayout='column' fxLayoutAlign="space-between" class="form-group">
+      <md-input-container fxFlex="100">
+        <input mdInput placeholder="tags" #tags formControlName="tags" formControlName="tags" required>
+      </md-input-container>
+    </div>
     <button md-button disabled="product.invalid">Next step</button>
   </form>
 </md-card>
