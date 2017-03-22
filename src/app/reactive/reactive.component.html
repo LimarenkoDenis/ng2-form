@@ -4,13 +4,13 @@
     <div>Info</div>
     <div fxLayout='row' fxLayoutAlign="space-between" class="form-group">
       <md-input-container fxFlex="45">
-        <input mdInput placeholder="name" #name formControlName="name" required mdTooltip="Tooltip!"  mdTooltipPosition="above">
+        <input mdInput placeholder="name" #name formControlName="name" required mdTooltip="Tooltip!"  mdTooltipPosition="above" id="name">
         <md-hint align="end" *ngIf="authForm.controls['name'].errors && authForm.controls['name'].touched">
           You can't leave this empty. Choose your username
         </md-hint>
       </md-input-container>
       <md-input-container fxFlex="45">
-        <input mdInput placeholder="surname" #surname formControlName="surname" required>
+        <input mdInput placeholder="surname" #surname formControlName="surname" required id="surname">
         <md-hint align="end" *ngIf="authForm.controls['surname'].errors && authForm.controls['surname'].touched">
           You can't leave this empty. Choose your username
         </md-hint>
@@ -35,17 +35,17 @@
     <div>Account</div>
     <div fxLayout='column' fxLayoutAlign="space-between" class="form-group">
       <md-input-container >
-        <input mdInput type="email" placeholder="Email" #email formControlName="email" required>
+        <input mdInput type="email" placeholder="Email" #email formControlName="email" required id="email">
         <md-hint align="end">eroor</md-hint>
       </md-input-container>
       <md-input-container >
-        <input mdInput type="password" placeholder="Create a password" #password formControlName="password" required>
+        <input mdInput type="password" placeholder="Create a password" #password formControlName="password" required id="password">
         <md-hint align="end" *ngIf="authForm.controls['password'].hasError('error_password') && authForm.controls['password'].touched">
           You can't leave this empty
         </md-hint>
       </md-input-container>
       <md-input-container >
-        <input mdInput type="password" placeholder="Cinfirm your password" #confirm formControlName="confirm" required>
+        <input mdInput type="password" placeholder="Cinfirm your password" #confirm formControlName="confirm" required id="confirm">
         <md-hint align="end" *ngIf="authForm.hasError('error_match') &&  authForm.controls['confirm'].touched">
           {{authForm.errors.error_match}}
         </md-hint>
