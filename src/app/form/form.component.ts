@@ -10,51 +10,64 @@ import { Validations } from './../validators/validations';
 export class FormComponent implements OnInit {
 
   public product: FormGroup;
+  public tagInput: FormControl = new FormControl('');
 
   public constructor(
     private _fb: FormBuilder,
-  ) { }
-
-  public ngOnInit(): void {
+  ) {
     this.product = this._fb.group({
       title: ['', [Validators.required, Validators.minLength(1)]],
       description: ['', [Validators.required, Validators.minLength(1)]],
-      photos: [[
-        'https://avatars1.githubusercontent.com/u/463703?v=3&s=400',
-        'https://avatars1.githubusercontent.com/u/111951?v=3&s=400'
-      ]],
+      photos: this._fb.array([]),
       price: [],
       amount: [],
-      tags: [],
+      tags: this._fb.array([]),
       date: []
     });
+    (this.product.get('photos') as FormArray)
+    .push(new FormControl('https://avatars1.githubusercontent.com/u/111951?v=3&s=400'));
 
-    this.product.controls['tags'].valueChanges.subscribe(
+  }
+
+  public ngOnInit(): void {
+    this.tagInput.valueChanges.subscribe(
       (value: string) => {
-        console.log(value);
+
       }
     );
-
-
-    // console.log(this.product.controls['photos']);
-    // console.log(this.product.controls['photos'].value.includes('https://avatars1.githubusercontent.com/u/111951?v=3&s=400'));
-    // console.log(this.product.controls['photos'].value.includes('newpic'));
-    // this.product.controls['photos'].value = this.product.controls['photos'].value.concat(['d']);
-    // console.log();
-
-    // if (this.value.includes(topping)) {
-    //   this.value = this.value.filter((x: string) => topping !== x);
-    // } else {
-    //   this.value = this.value.concat([topping]);
-    // }
-    //  this.product.controls['photos'].setValue('https://avatars1.githubusercontent.com/u/463703?v=3&s=400',
-    //     'https://avatars1.githubusercontent.com/u/111951?v=3&s=400');
-
-  // this.product.get('photos').setValue('https://avatars1.githubusercontent.com/u/463703?v=3&s=400',
-  //        'https://avatars1.githubusercontent.com/u/111951?v=3&s=400');
-
-  //        console.log(this.product.get('photos'));
 
   }
 
 }
+
+
+
+
+
+
+
+
+        // console.log(value);
+        // const tag: string[] = value.split(',');
+        // console.log(tag);
+        // const lastValue: string = tag[tag.length - 1];
+        // console.log(lastValue);
+
+        // tag.forEach((item: string) => {
+        //   console.log(item);
+
+        //   let index: number = (this.product.get('tags') as FormArray).value.indexOf(item);
+        //   console.log(index);
+
+        //   if (index === -1) {
+        //     (this.product.get('tags') as FormArray).push(new FormControl(value));
+        //   }
+        //   // console.log(a);
+
+        // });
+        // (this.product.get('tags') as FormArray).push(new FormControl(value));
+
+        // console.log((this.product.get('tags') as FormArray).value);
+
+    // (this.product.get('photos') as FormArray).push(new FormControl('https://avatars1.githubusercontent.com/u/111951?v=3&s=400'));
+    // console.log(this.product.get('photos').value);

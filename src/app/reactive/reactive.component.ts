@@ -26,7 +26,7 @@ export class ReactiveComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(1)]],
       surname: ['', [Validators.required, Validators.minLength(1)]],
       phone: ['', Validations.checkPhone],
-      email: [''], // release 2.4.7? Validations.email
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validations.checkPassword]],
       confirm: [''],
       birthday: this._fb.group({
@@ -43,8 +43,8 @@ export class ReactiveComponent implements OnInit {
   }
 
   // md select type
-  public setPhone(phone): void {
-    this.authForm.controls['phone'].setValue(phone.value);
+  public setPhone(phone: number): void {
+    this.authForm.controls['phone'].setValue(phone);
   }
 
   public submit(form: FormGroup): void {

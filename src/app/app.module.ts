@@ -8,7 +8,8 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { ReactiveComponent } from './reactive/reactive.component';
 import { FormComponent } from './form/form.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,9 @@ import { FormComponent } from './form/form.component';
     BrowserModule,
     ReactiveFormsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FileUploadModule,
+    BrowserAnimationsModule
   ],
   providers: [ReactiveService],
   bootstrap: [AppComponent]

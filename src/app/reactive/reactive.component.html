@@ -19,9 +19,9 @@
 
     <div>Mobile phone</div>
     <div fxLayout='row'class="form-group">
-      <md-select fxFlex="20" (change)="setPhone($event)">
+      <md-select fxFlex="20" (change)="setPhone($event.value)">
         <md-option *ngFor="let country of countries" [value]="country.dial_code">
-          {{country.name}} {{ country.dial_code }}
+          {{country.name}}
         </md-option>
       </md-select>
       <md-input-container fxFlex="80">
@@ -36,7 +36,7 @@
     <div fxLayout='column' fxLayoutAlign="space-between" class="form-group">
       <md-input-container >
         <input mdInput type="email" placeholder="Email" #email formControlName="email" required id="email">
-        <md-hint align="end">eroor</md-hint>
+        <md-hint align="end" *ngIf="authForm.controls['email'].errors && authForm.controls['email'].touched">error</md-hint>
       </md-input-container>
       <md-input-container >
         <input mdInput type="password" placeholder="Create a password" #password formControlName="password" required id="password">
