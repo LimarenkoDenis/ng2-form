@@ -17,27 +17,30 @@ export class FormComponent implements OnInit {
   ) {
     this.product = this._fb.group({
       title: ['', [Validators.required, Validators.minLength(1)]],
-      description: ['', [Validators.required, Validators.minLength(1)]],
+      description: ['', [Validators.required, Validators.minLength(5)]],
       photos: this._fb.array([]),
-      price: [],
-      amount: [],
+      price: [''],
+      amount: [''],
       tags: this._fb.array([]),
-      date: []
+      date: ['']
     });
-    (this.product.get('photos') as FormArray)
-    .push(new FormControl('https://avatars1.githubusercontent.com/u/111951?v=3&s=400'));
 
   }
 
   public ngOnInit(): void {
-    this.tagInput.valueChanges.subscribe(
-      (value: string) => {
-
-      }
-    );
 
   }
 
+  public addTag(tag: string): void {
+    if (!this.product.get('tags').value.includes(tag)) {
+      this.product.get('tags').value.push(tag);
+      this.tagInput.reset();
+    }
+  }
+
+  public removeTag(index: number): void {
+    this.product.get('tags').value.splice(index, 1);
+  }
 }
 
 

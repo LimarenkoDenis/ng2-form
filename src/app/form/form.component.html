@@ -2,31 +2,29 @@
   <form [formGroup]="product" (ngSubmit)="submit(product)">
     <div fxLayout='column' fxLayoutAlign="space-between" class="form-group">
       <md-input-container fxFlex="100">
-        <input mdInput placeholder="title" #title formControlName="title" required>
+        <input mdInput placeholder="Title" #title formControlName="title" required>
         <md-hint align="end" *ngIf="product.controls['title'].errors && product.controls['title'].touched">
           You can't leave this empty. Choose your username
         </md-hint>
       </md-input-container>
       <md-input-container fxFlex="100">
-        <input mdInput placeholder="description" #description formControlName="description" required>
+        <input mdInput placeholder="Description" #description formControlName="description" required>
         <md-hint align="end" *ngIf="product.controls['description'].errors && product.controls['description'].touched">
           You can't leave this empty. Choose your username
         </md-hint>
       </md-input-container>
+      <md-input-container fxFlex="100">
+        <input mdInput placeholder="Tags (by space)" #tag [formControl]="tagInput" required (keyup.space)="addTag(tag.value)">
+      </md-input-container>
+      <md-chip-list>
+        <md-chip *ngFor="let e of product.get('tags').value; let i = index">
+          <span>{{e}}</span> <a (click)="removeTag(i)">x</a>
+        </md-chip>
+      </md-chip-list>
     </div>
     <div fxLayout='row' class="form-group" *ngFor="let img of product.controls['photos'].value">
       <img class="img" md-card-image [src]="img">
     </div>
-    <div fxLayout='column' fxLayoutAlign="space-between" class="form-group">
-      <md-input-container fxFlex="100">
-        <input mdInput placeholder="tags" #tags [formControl]="tagInput" required>
-      </md-input-container>
-    </div>
-    <ul formGroupName="tags">
-      <li *ngFor="let e of product.get('tags').controls; let i = index">
-        <input type="text" formControlName={{i}}>
-      </li>
-    </ul>
     <button md-button disabled="product.invalid">Next step</button>
   </form>
 </md-card>
