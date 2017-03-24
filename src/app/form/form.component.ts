@@ -24,15 +24,14 @@ export class FormComponent implements OnInit {
       tags: this._fb.array([]),
       date: ['']
     });
-
   }
 
   public ngOnInit(): void {
-
   }
 
   public addTag(tag: string): void {
-    if (!this.product.get('tags').value.includes(tag)) {
+    tag = tag.trim();
+    if (!this.product.get('tags').value.includes(tag) && this.product.get('tags').value !== '') {
       this.product.get('tags').value.push(tag);
       this.tagInput.reset();
     }
@@ -49,28 +48,24 @@ export class FormComponent implements OnInit {
 
 
 
+// import { Subject } from 'rxjs/Subject';
+// import { Observable } from 'rxjs/Observable';
+// import 'rxjs/add/operator/filter';
 
-        // console.log(value);
-        // const tag: string[] = value.split(',');
-        // console.log(tag);
-        // const lastValue: string = tag[tag.length - 1];
-        // console.log(lastValue);
+// private addTag$$: Subject<string> = new Subject<string>();
 
-        // tag.forEach((item: string) => {
-        //   console.log(item);
 
-        //   let index: number = (this.product.get('tags') as FormArray).value.indexOf(item);
-        //   console.log(index);
+// public addTag(tag: string): void {
+//   this.addTag$$.next(tag);
+// }
 
-        //   if (index === -1) {
-        //     (this.product.get('tags') as FormArray).push(new FormControl(value));
-        //   }
-        //   // console.log(a);
 
-        // });
-        // (this.product.get('tags') as FormArray).push(new FormControl(value));
-
-        // console.log((this.product.get('tags') as FormArray).value);
-
-    // (this.product.get('photos') as FormArray).push(new FormControl('https://avatars1.githubusercontent.com/u/111951?v=3&s=400'));
-    // console.log(this.product.get('photos').value);
+// this.addTag$$
+//   .map((tag: string) => tag.trim())
+//   .filter((tag: string) => tag !== '')
+//   .subscribe((tag: string) => {
+//     if (!this.product.get('tags').value.includes(tag)) {
+//       this.product.get('tags').value.push(tag);
+//     }
+//     this.tagInput.reset();
+//   });
